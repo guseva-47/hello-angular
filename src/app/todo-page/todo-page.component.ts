@@ -10,6 +10,7 @@ import { IUser } from '../user.interface';
 export class TodoPageComponent implements OnInit {
   items: IItem[] = [];
   users: IUser[] = [];
+  selectedItem: IItem = { id: -1, title: '', completed: false, userId: -1 };
 
   constructor() {
     this.getAllItemsFromServer();
