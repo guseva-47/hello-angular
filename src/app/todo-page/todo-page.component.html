@@ -11,14 +11,24 @@
 <div class="cards">
   <div *ngFor="let user of users" class="card">
     <h3 class="card-title">{{user.name}}</h3>
-    <div class="items">
-      <div *ngIf="getUsersItems(user.id).length == 0">
+    <div>
+      <div
+        *ngIf="getUsersItems(user.id).length == 0"
+        class="item"
+      >
         Записей нет
       </div>
-      <ul *ngFor="let item of getUsersItems(user.id); index as i" class="item">
-        <li (click)="selectedItem = item">
+      <ul class="items">
+        <li
+          *ngFor="let item of getUsersItems(user.id); index as i"
+          (click)="selectedItem = item"
+          [class.completed-item]="item.completed"
+          [class.selected-item]="item.id == selectedItem.id"
+          class="item"
+        >
           <span class="item-num">{{i + 1}}</span>
-          <app-item [item]="item"></app-item></li>
+          <app-item [item]="item"></app-item>
+        </li>
       </ul>
     </div>
   </div>
