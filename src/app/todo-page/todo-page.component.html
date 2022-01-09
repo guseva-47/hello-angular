@@ -1,12 +1,15 @@
-<div *ngFor="let user of users" class="">
-  <h2>{{user.name}}</h2>
-  <div class="items">
-    <div *ngIf="getUsersItems(user.id).length == 0">
-      Записей нет
-    </div>
-    <div *ngFor="let item of getUsersItems(user.id)" class="item">
-      <app-item [item]="item"></app-item>
+<div class="cards">
+  <div *ngFor="let user of users" class="card">
+    <h2 class="card-title">{{user.name}}</h2>
+    <div class="items">
+      <div *ngIf="getUsersItems(user.id).length == 0">
+        Записей нет
+      </div>
+      <ul *ngFor="let item of getUsersItems(user.id); index as i" class="item">
+        <li>
+          <span class="item-num">{{i + 1}}</span>
+          <app-item [item]="item"></app-item></li>
+      </ul>
     </div>
   </div>
 </div>
-
